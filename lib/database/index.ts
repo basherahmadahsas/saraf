@@ -19,22 +19,4 @@ export const connectToDatabase = async () => {
     cached.conn = await cached.promise;
 
     return cached.conn;
-
-    // if (!cached.promise) {
-    //     const opts = {
-    //         dbName: 'saraf',
-    //         useNewUrlParser: true,
-    //         useUnifiedTopology: true,
-    //         bufferCommands: false,
-    //         bufferMaxEntries: 0,
-    //         useFindAndModify: false,
-    //         useCreateIndex: true,
-    //     };
-
-    //     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-    //         return mongoose;
-    //     });
-    // }
-    // cached.conn = await cached.promise;
-    // return cached.conn;
 }
