@@ -33,6 +33,8 @@ export async function createEvent({ userId, event, path }: CreateEventParams) {
         await connectToDatabase()
 
         const organizer = await User.findById(userId)
+        // console.log("\n\n\n\n", userId, userId == '65b734a218d057ee212d6570', "\n\n\n")
+
         if (!organizer) throw new Error('Organizer not found')
 
         const newEvent = await Event.create({ ...event, category: event.categoryId, organizer: userId })
@@ -58,6 +60,7 @@ export async function getEventById(eventId: string) {
         handleError(error)
     }
 }
+
 
 // UPDATE
 export async function updateEvent({ userId, event, path }: UpdateEventParams) {

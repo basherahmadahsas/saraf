@@ -31,18 +31,19 @@ type EventFormProps = {
 }
 
 const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
+
   const [files, setFiles] = useState<File[]>([])
   const initialValues = event && type === 'Update' 
-    ? { 
-      ...event, 
-      startDateTime: new Date(event.startDateTime), 
-      endDateTime: new Date(event.endDateTime) 
+  ? { 
+    ...event, 
+    startDateTime: new Date(event.startDateTime), 
+    endDateTime: new Date(event.endDateTime) 
     }
     : eventDefaultValues;
-  const router = useRouter();
+    const router = useRouter();
 
   const { startUpload } = useUploadThing('imageUploader')
-
+  
   const form = useForm<z.infer<typeof eventFormSchema>>({
     resolver: zodResolver(eventFormSchema),
     defaultValues: initialValues
